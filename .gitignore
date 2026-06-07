@@ -17,6 +17,12 @@ pnpm-debug.log*
 .env
 .env.production
 
+# Firebase cache
+.firebase/
+
+# Cloud Functions compiled output
+functions/lib/
+
 # macOS-specific files
 .DS_Store
 

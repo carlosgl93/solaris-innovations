@@ -1,0 +1,47 @@
+---
+const faqs = [
+  {
+    question: '¿Trabajas bajo la marca de mi agencia?',
+    answer: 'Sí. Opero en modo white-label completo. Tus clientes ven solo el nombre de tu agencia; yo soy el equipo de desarrollo invisible. Puedo firmar NDAs si lo requieres.',
+  },
+  {
+    question: '¿Qué necesito para empezar un proyecto?',
+    answer: 'Un archivo Figma con el diseño completo (o al menos el 80%), acceso al repositorio si ya existe uno, y claridad sobre el stack preferido. El resto lo coordino contigo en una llamada inicial.',
+  },
+  {
+    question: '¿Cuánto tarda un proyecto típico?',
+    answer: 'Una landing page toma 1–2 semanas. Un sitio completo con CMS, 3–5 semanas. Una web app depende de la complejidad, pero arranco la estimación en el kick-off.',
+  },
+  {
+    question: '¿Puedes integrarte al flujo de mi agencia?',
+    answer: 'Sí. Trabajo con Notion, Linear, Jira, Slack o cualquier herramienta que uses. Me adapto a tu proceso, no al revés.',
+  },
+  {
+    question: '¿Qué pasa después del lanzamiento?',
+    answer: 'Ofrezco soporte post-launch de 30 días para bugs sin costo adicional. Para mantenimiento continuo, el plan retainer de 15 hrs/mes es la opción más eficiente.',
+  },
+];
+---
+
+<section id="faq" class="py-24 px-6 bg-[#0d0e10]">
+  <div class="max-w-3xl mx-auto">
+    <p class="text-xs text-white/50 uppercase tracking-widest mb-4">FAQ</p>
+    <h2 class="text-3xl md:text-4xl font-bold text-white mb-16 leading-tight">
+      Preguntas frecuentes.
+    </h2>
+
+    <div class="divide-y divide-white/8">
+      {faqs.map((faq, i) => (
+        <details class="group py-6" open={i === 0}>
+          <summary class="flex items-center justify-between cursor-pointer list-none gap-4">
+            <span class="text-white font-medium text-base">{faq.question}</span>
+            <span class="shrink-0 text-white/50 group-open:rotate-45 transition-transform duration-200 text-xl leading-none">+</span>
+          </summary>
+          <p class="mt-4 text-white/55 text-sm leading-relaxed font-light pr-8">
+            {faq.answer}
+          </p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

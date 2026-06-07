@@ -1,0 +1,50 @@
+---
+const services = [
+  {
+    icon: '✦',
+    title: 'Diseño a código',
+    description: 'Convierto tus diseños Figma en sitios web pixel-perfect. Cada componente, espaciado y tipografía replicados con exactitud.',
+  },
+  {
+    icon: '◈',
+    title: 'Headless CMS',
+    description: 'Integro Sanity, Contentful o Directus para que tu cliente gestione el contenido sin tocar código.',
+  },
+  {
+    icon: '◎',
+    title: 'Performance 95+',
+    description: 'Lighthouse 95+ garantizado. Sitios rápidos que posicionan mejor y convierten más.',
+  },
+  {
+    icon: '◻',
+    title: 'White-label',
+    description: 'Trabajo bajo la marca de tu agencia. Tus clientes ven tu agencia, yo soy el equipo dev invisible.',
+  },
+  {
+    icon: '◷',
+    title: 'Multiidioma',
+    description: 'i18n desde el diseño: inglés, español y más. Rutas, SEO y hreflang correctamente configurados.',
+  },
+];
+---
+
+<section id="servicios" class="py-24 px-6 bg-[#0d0e10]">
+  <div class="max-w-6xl mx-auto">
+    <p class="text-xs text-white/50 uppercase tracking-widest mb-4">Servicios</p>
+    <h2 class="text-3xl md:text-4xl font-bold text-white mb-16 max-w-lg leading-tight">
+      Todo lo que necesita tu agencia para entregar proyectos digitales.
+    </h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {services.map((s, i) => (
+        <div
+          class={`relative p-8 rounded-2xl border border-white/8 bg-white/4 backdrop-blur-sm flex flex-col gap-4 ${i === 4 ? 'sm:col-span-2 lg:col-span-1' : ''}`}
+        >
+          <span class="text-white/40 text-xl" aria-hidden="true">{s.icon}</span>
+          <h3 class="text-white font-semibold text-lg">{s.title}</h3>
+          <p class="text-white/55 text-sm leading-relaxed font-light">{s.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

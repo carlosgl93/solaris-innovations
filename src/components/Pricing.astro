@@ -1,0 +1,182 @@
+---
+const tiers = [
+  {
+    id: 'landing',
+    name: 'Landing page',
+    priceBase: '20–40',
+    pricePwa: '25–48',
+    currency: 'UF',
+    description: 'Diseño Figma a landing page de alta conversión. Ideal para campañas y lanzamientos.',
+    features: [
+      'Responsive (mobile-first)',
+      'SEO optimizado',
+      'Formulario de contacto',
+      'Lighthouse 95+',
+      'Deploy incluido',
+    ],
+    highlighted: false,
+  },
+  {
+    id: 'sitio',
+    name: 'Sitio completo + CMS',
+    priceBase: '40–90',
+    pricePwa: '50–103',
+    currency: 'UF',
+    description: 'Sitio multi-página con gestión de contenido para que el cliente edite por si mismo.',
+    inherit: 'Todo lo de Landing Page, además:',
+    features: [
+      'Panel de edición para el cliente final',
+      'Contenido dinámico (blog, portafolio, productos)',
+      'SEO por página (meta, OG, sitemap)',
+      'Analíticas integradas (GA4)',
+      'Multiidioma (opcional)',
+      'Capacitación al cliente',
+    ],
+    highlighted: true,
+  },
+  {
+    id: 'webapp',
+    name: 'Web app',
+    priceBase: '90–200',
+    pricePwa: '105–220',
+    currency: 'UF',
+    description: 'Aplicación web con lógica de negocio y backend.',
+    inherit: 'Todo lo de Sitio Completo + CMS, además:',
+    features: [
+      'Frontend complejo',
+      'Cuentas de usuario + base de datos',
+      'Integraciones con APIs',
+      'Dashboard / admin',
+      'Soporte 90 días post-launch',
+    ],
+    highlighted: false,
+  },
+];
+
+const retainer = {
+  name: 'Retainer mensual',
+  price: '13–20',
+  currency: 'UF/mes',
+  description: '15 horas/mes para tu agencia. Proyectos continuos, fixes y nuevas features.',
+  features: [
+    '15 hrs/mes garantizadas',
+    'Prioridad de respuesta',
+    'Sin piponeo de cotización',
+    'Factura mensual',
+  ],
+};
+---
+
+<section id="precios" class="py-24 px-6 bg-[#0d0e10]">
+  <div class="max-w-6xl mx-auto">
+    <p class="text-xs text-white/50 uppercase tracking-widest mb-4">Precios</p>
+    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 max-w-lg leading-tight">
+      Inversión clara. Sin sorpresas.
+    </h2>
+    <p class="text-white/55 text-sm mb-10 max-w-md font-light leading-relaxed">
+      Rangos referenciales. El precio final depende del alcance, complejidad y plazos del proyecto.
+    </p>
+
+    <!-- PWA toggle -->
+    <label class="inline-flex items-center gap-3 mb-10 cursor-pointer select-none group">
+      <div class="relative">
+        <input id="pwa-toggle" type="checkbox" class="sr-only peer" />
+        <div class="w-11 h-6 rounded-full border border-white/20 bg-white/6 peer-checked:bg-white/20 peer-checked:border-white/40 transition-all duration-200"></div>
+        <div class="absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white/40 peer-checked:bg-white peer-checked:translate-x-5 transition-all duration-200"></div>
+      </div>
+      <span class="text-sm text-white/60 group-has-[:checked]:text-white transition-colors duration-200">
+        Aplicación móvil descargable
+        <span class="text-white/50 ml-1">(PWA)</span>
+      </span>
+    </label>
+
+    <!-- Project tiers -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 items-start">
+      {tiers.map(tier => (
+        <div
+          class={`rounded-2xl p-8 flex flex-col gap-6 border transition-transform duration-300 ${
+            tier.highlighted
+              ? 'border-white/25 bg-white/6 md:-translate-y-3 md:scale-[1.03] pricing-glow'
+              : 'border-white/8 bg-white/4'
+          }`}
+        >
+          <div>
+            <h3 class="text-white font-semibold text-lg mb-1">{tier.name}</h3>
+            <p class="text-white/50 text-sm font-light">{tier.description}</p>
+          </div>
+          <div>
+            <span
+              class="text-3xl font-bold text-white"
+              data-base={tier.priceBase}
+              data-pwa={tier.pricePwa}
+              data-price-label
+            >
+              {tier.priceBase}
+            </span>
+            <span class="text-white/50 text-sm ml-1">{tier.currency}</span>
+          </div>
+          <ul class="flex flex-col gap-2 flex-1">
+            {'inherit' in tier && (
+              <li class="text-xs text-white/50 font-light pb-1">{tier.inherit}</li>
+            )}
+            {tier.features.map(f => (
+              <li class="flex items-start gap-2 text-sm text-white/65 font-light">
+                <svg class="mt-0.5 shrink-0" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M2 7l3.5 3.5L12 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                {f}
+              </li>
+            ))}
+            <!-- PWA feature row — shown only when toggle is on -->
+            <li class="pwa-feature hidden items-start gap-2 text-sm text-white/65 font-light">
+              <svg class="mt-0.5 shrink-0" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M2 7l3.5 3.5L12 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Aplicación móvil descargable (PWA)
+            </li>
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <!-- Retainer card -->
+    <div class="rounded-2xl border border-white/8 bg-white/4 p-8 flex flex-col md:flex-row md:items-center gap-6 md:gap-12">
+      <div class="flex-1">
+        <p class="text-xs text-white/50 uppercase tracking-widest mb-2">Opción continua</p>
+        <h3 class="text-white font-semibold text-xl mb-2">{retainer.name}</h3>
+        <p class="text-white/50 text-sm font-light">{retainer.description}</p>
+      </div>
+      <div class="shrink-0">
+        <span class="text-3xl font-bold text-white">{retainer.price}</span>
+        <span class="text-white/50 text-sm ml-1">{retainer.currency}</span>
+      </div>
+      <ul class="flex flex-wrap gap-x-6 gap-y-2 md:max-w-xs">
+        {retainer.features.map(f => (
+          <li class="flex items-center gap-2 text-sm text-white/65 font-light">
+            <svg class="shrink-0" width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M2 7l3.5 3.5L12 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            {f}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<script>
+  const toggle = document.getElementById('pwa-toggle') as HTMLInputElement;
+  const priceLabels = document.querySelectorAll<HTMLElement>('[data-price-label]');
+  const pwaFeatures = document.querySelectorAll<HTMLElement>('.pwa-feature');
+
+  toggle.addEventListener('change', () => {
+    const pwaOn = toggle.checked;
+    priceLabels.forEach(el => {
+      el.textContent = pwaOn ? (el.dataset.pwa ?? '') : (el.dataset.base ?? '');
+    });
+    pwaFeatures.forEach(el => {
+      el.classList.toggle('hidden', !pwaOn);
+      el.classList.toggle('flex', pwaOn);
+    });
+  });
+</script>

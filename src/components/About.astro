@@ -1,0 +1,62 @@
+---
+const companies = ['Cencosud', 'AFG', 'Microsystems'];
+const countries = ['CL', 'AR', 'PE', 'COL', 'USA', 'AU', 'IN', 'PK'];
+---
+
+<section id="sobre-mi" class="py-24 px-6 bg-[#0d0e10]">
+  <div class="max-w-6xl mx-auto">
+    <p class="text-xs text-white/50 uppercase tracking-widest mb-4">Tras bambalinas</p>
+
+    <div class="flex flex-col md:flex-row gap-12 md:gap-16 items-start">
+
+      <!-- Photo -->
+      <div class="shrink-0">
+        <div class="w-48 h-48 md:w-56 md:h-56 rounded-2xl overflow-hidden border border-white/8">
+          <img
+            src="/carlos.png"
+            alt="Carlos Gumucio"
+            class="w-full h-full object-cover object-top"
+          />
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div class="flex flex-col gap-6 max-w-xl">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-3 leading-tight">
+            Soy Carlos.<br />Llevo 8 años metido en esto.
+          </h2>
+          <p class="text-white/60 text-sm leading-relaxed font-light">
+            Construyo sitios que cargan al tiro, posicionan bacán y no se caen. Trabajo sobre infraestructura Google — no es magia, es tecnología probada en producción.
+          </p>
+        </div>
+
+        <p class="text-white/60 text-sm leading-relaxed font-light">
+          Tu agencia me contrata, yo entrego. Tus clientes ven tu marca — yo soy el dev invisible. Así de simple, compadre.
+        </p>
+
+        <!-- Companies -->
+        <div class="flex flex-wrap gap-2">
+          {companies.map(c => (
+            <span class="text-xs text-white/50 border border-white/10 rounded-full px-3 py-1">
+              {c}
+            </span>
+          ))}
+        </div>
+
+        <!-- Countries -->
+        <div>
+          <p class="text-xs text-white/30 uppercase tracking-widest mb-2">Trabajado con equipos de:</p>
+          <div class="flex flex-wrap gap-2">
+            {countries.map(c => (
+              <span class="text-xs font-medium text-white/50">
+                {c}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

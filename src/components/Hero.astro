@@ -1,0 +1,62 @@
+---
+const WA_NUMBER = '56939242145';
+const WA_MSG = encodeURIComponent('Hola Carlos, me gustaría hablar sobre un proyecto.');
+const WA_HREF = `https://wa.me/${WA_NUMBER}?text=${WA_MSG}`;
+---
+
+<section
+  id="inicio"
+  class="relative flex min-h-screen flex-col items-center justify-center overflow-hidden"
+>
+  <!-- Hero background image -->
+  <img
+    src="/hero-background.avif"
+    alt=""
+    aria-hidden="true"
+    class="absolute inset-0 z-0 w-full h-full object-cover object-center"
+    fetchpriority="high"
+  />
+
+  <!-- Dark overlay to maintain text legibility + atmospheric teal tint -->
+  <div
+    class="absolute inset-0 z-0"
+    style="background: linear-gradient(to bottom, rgba(13,14,16,0.45) 0%, rgba(13,14,16,0.25) 40%, rgba(13,14,16,0.75) 80%, #0d0e10 100%);"
+  ></div>
+
+  <!-- Content -->
+  <div class="relative z-10 flex flex-col items-center text-center px-6 max-w-4xl mx-auto">
+    <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tight mb-6">
+      Tu diseño.<br />Mi código.<br />Y a producción.
+    </h1>
+    <p class="text-base md:text-lg text-white/70 max-w-xl mb-10 leading-relaxed font-light">
+      Implemento diseños Figma con precisión pixel-perfect para agencias de diseño en LATAM.
+      Tú diseñas, yo construyo, tu cliente queda feliz.
+    </p>
+    <a
+      href={WA_HREF}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-2 border border-white/70 text-white text-sm font-medium px-8 py-3.5 rounded-full hover:bg-white hover:text-[#0d0e10] transition-all duration-200"
+    >
+      Trabajemos juntos
+    </a>
+  </div>
+
+  <!-- Scroll indicator -->
+  <button
+    id="scroll-down"
+    class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-white/40 text-xs tracking-widest uppercase hover:text-white/70 transition-colors duration-200 cursor-pointer bg-transparent border-none"
+    aria-label="Ver más"
+  >
+    <span>Más</span>
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="animate-bounce">
+      <polyline points="4 6 8 10 12 6"/>
+    </svg>
+  </button>
+
+  <script>
+    document.getElementById('scroll-down')?.addEventListener('click', () => {
+      document.getElementById('servicios')?.scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+</section>

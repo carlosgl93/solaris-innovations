@@ -1,0 +1,41 @@
+---
+const year = new Date().getFullYear();
+
+const links = [
+  { label: 'Servicios', href: '#servicios' },
+  { label: 'Cómo funciona', href: '#como-funciona' },
+  { label: 'Proyectos', href: '#proyectos' },
+  { label: 'Precios', href: '#precios' },
+  { label: 'FAQ', href: '#faq' },
+  { label: 'Contacto', href: '#contacto' },
+];
+---
+
+<footer class="border-t border-white/8 py-12 px-6 bg-[#0d0e10]">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-2 text-white font-semibold text-sm tracking-tight select-none">
+      <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M10 0L11.8 7.6L19.5 5.7L13.9 11.3L19.5 14.3L11.9 12.2L10 20L8.1 12.2L0.5 14.3L6.1 11.3L0.5 5.7L8.2 7.6L10 0Z" fill="white"/>
+      </svg>
+      <span>Solaris Innovations</span>
+    </a>
+
+    <!-- Nav links -->
+    <nav>
+      <ul class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+        {links.map(l => (
+          <li>
+            <a href={l.href} class="text-white/50 text-xs hover:text-white/80 transition-colors duration-200">{l.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <!-- Copyright -->
+    <p class="text-white/50 text-xs">
+      © {year} Carlos Gumucio
+    </p>
+  </div>
+</footer>

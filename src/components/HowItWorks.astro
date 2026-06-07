@@ -1,0 +1,40 @@
+---
+const steps = [
+  {
+    number: '01',
+    title: 'Envías el diseño',
+    description: 'Compartes el link del archivo Figma con acceso de vista. Yo reviso el diseño, componentes y breakpoints.',
+  },
+  {
+    number: '02',
+    title: 'Yo construyo',
+    description: 'Desarrollo el sitio con Astro, Next.js o el stack que mejor calce. Entrego avances en staging para tu revisión.',
+  },
+  {
+    number: '03',
+    title: 'Tú lo entregas a tu cliente',
+    description: 'Producción, dominio y handoff completo. Puedo capacitar al equipo del cliente para gestionar su contenido.',
+  },
+];
+---
+
+<section id="como-funciona" class="py-24 px-6 bg-[#0d0e10]">
+  <div class="max-w-6xl mx-auto">
+    <p class="text-xs text-white/50 uppercase tracking-widest mb-4">Cómo funciona</p>
+    <h2 class="text-3xl md:text-4xl font-bold text-white mb-16 max-w-lg leading-tight">
+      Simple. Sin sorpresas. Sin fricción.
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/8 rounded-2xl overflow-hidden">
+      {steps.map(step => (
+        <div class="bg-[#0d0e10] p-10 flex flex-col gap-6">
+          <span class="text-4xl font-bold text-white/10 tabular-nums" aria-hidden="true">{step.number}</span>
+          <div>
+            <h3 class="text-white font-semibold text-lg mb-3">{step.title}</h3>
+            <p class="text-white/55 text-sm leading-relaxed font-light">{step.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

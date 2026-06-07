@@ -1,0 +1,125 @@
+---
+const links = [
+  { label: 'Servicios', href: '#servicios' },
+  { label: 'Cómo funciona', href: '#como-funciona' },
+  { label: 'Proyectos', href: '#proyectos' },
+  { label: 'Precios', href: '#precios' },
+  { label: 'Sobre mí', href: '#sobre-mi' },
+  { label: 'FAQ', href: '#faq' },
+];
+
+const WA_NUMBER = '56939242145';
+const WA_MSG = encodeURIComponent('Hola Carlos, me gustaría hablar sobre un proyecto.');
+const WA_HREF = `https://wa.me/${WA_NUMBER}?text=${WA_MSG}`;
+---
+
+<nav
+  id="navbar"
+  class="fixed top-0 left-0 right-0 z-50 flex items-center justify-center px-6 py-5 transition-colors duration-300"
+>
+  <!-- Desktop layout: logo | links | cta -->
+  <div class="flex w-full max-w-6xl items-center justify-between">
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-2 text-white font-semibold text-lg tracking-tight select-none">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M10 0L11.8 7.6L19.5 5.7L13.9 11.3L19.5 14.3L11.9 12.2L10 20L8.1 12.2L0.5 14.3L6.1 11.3L0.5 5.7L8.2 7.6L10 0Z" fill="white"/>
+      </svg>
+      <span>Solaris Innovations</span>
+    </a>
+
+    <!-- Desktop links -->
+    <ul class="hidden md:flex items-center gap-8 text-sm text-white/80">
+      {links.map(l => (
+        <li>
+          <a href={l.href} class="hover:text-white transition-colors duration-200">{l.label}</a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- WhatsApp CTA (desktop) + Hamburger (mobile) -->
+    <div class="flex items-center gap-4">
+      <a
+        href={WA_HREF}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hidden md:inline-flex items-center gap-2 border border-white/60 text-white text-sm font-medium px-5 py-2 rounded-full hover:bg-white hover:text-[#0d0e10] transition-all duration-200"
+      >
+        WhatsApp
+      </a>
+
+      <!-- Hamburger button -->
+      <button
+        id="burger-btn"
+        class="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+      >
+        <span class="burger-line block w-6 h-px bg-white transition-all duration-300"></span>
+        <span class="burger-line block w-6 h-px bg-white transition-all duration-300"></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile fullscreen overlay -->
+<div
+  id="mobile-menu"
+  class="fixed inset-0 z-40 bg-black flex flex-col items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300"
+  aria-hidden="true"
+>
+  <ul class="flex flex-col items-center gap-8 text-2xl font-light text-white/90">
+    {links.map(l => (
+      <li>
+        <a href={l.href} class="mobile-link hover:text-white transition-colors duration-200">{l.label}</a>
+      </li>
+    ))}
+  </ul>
+
+  <!-- Close button -->
+  <button
+    id="close-btn"
+    class="absolute bottom-12 left-1/2 -translate-x-1/2 text-white/60 hover:text-white transition-colors duration-200"
+    aria-label="Cerrar menú"
+  >
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+      <line x1="18" y1="6" x2="6" y2="18"/>
+      <line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+  </button>
+</div>
+
+<script>
+  const burgerBtn = document.getElementById('burger-btn')!;
+  const closeBtn = document.getElementById('close-btn')!;
+  const mobileMenu = document.getElementById('mobile-menu')!;
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+
+  function openMenu() {
+    mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+    burgerBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+    burgerBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  burgerBtn.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+
+  // Scroll: add bg when not at top
+  const navbar = document.getElementById('navbar')!;
+  function handleScroll() {
+    if (window.scrollY > 20) {
+      navbar.classList.add('bg-[#0d0e10]/90', 'backdrop-blur-sm');
+    } else {
+      navbar.classList.remove('bg-[#0d0e10]/90', 'backdrop-blur-sm');
+    }
+  }
+  window.addEventListener('scroll', handleScroll, { passive: true });
+</script>

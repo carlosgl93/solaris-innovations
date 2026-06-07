@@ -1,0 +1,40 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Carlos Gumucio — Dev Partner para Agencias de Diseño en LATAM',
+  description = 'Implemento diseños Figma con precisión pixel-perfect para agencias de diseño en LATAM. Tú diseñas, yo construyo, tu cliente queda feliz.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+
+    <title>{title}</title>
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content="es_CL" />
+  </head>
+  <!-- Firebase Analytics — runs only in browser, after page load -->
+  <script>
+    import '../lib/firebase.ts';
+  </script>
+  <body>
+    <slot />
+  </body>
+</html>
